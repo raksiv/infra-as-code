@@ -12,6 +12,7 @@ inputs:
     description: "The GCP project ID where Cloud Shell will be enabled (e.g. `my-project-123`)"
   region:
     type: string
+    default: "us-central1"
     description: "The GCP region for Cloud Shell configuration (e.g. `us-central1`)"
 
 outputs:

@@ -16,36 +16,47 @@ inputs:
     description: "Unique ID for the dataset being provisioned (e.g. `my_dataset`)"
   dataset_name:
     type: string
+    default: null
     description: "Friendly name for the dataset being provisioned (e.g. `My Dataset`)"
   description:
     type: string
+    default: null
     description: "Dataset description (e.g. `Analytics dataset for production`)"
   location:
     type: string
+    default: "US"
     description: "The regional location for the dataset (e.g. `US`, `EU`, `us-central1`)"
   default_table_expiration_ms:
     type: number
+    default: null
     description: "Default TTL for tables in milliseconds (e.g. `3600000` for 1 hour)"
   delete_contents_on_destroy:
     type: bool
+    default: false
     description: "If true, delete all tables when destroying the dataset (e.g. `false`)"
   dataset_labels:
     type: map(string)
+    default: {}
     description: "Key-value pairs to apply to the dataset (e.g. `{\"environment\": \"prod\", \"team\": \"data\"}`)"
   tables:
     type: list(object)
+    default: []
     description: "List of tables to create in the dataset with schema, partitioning, and clustering"
   views:
     type: list(object)
+    default: []
     description: "List of views to create in the dataset with SQL queries"
   external_tables:
     type: list(object)
+    default: []
     description: "List of external tables to create (e.g. from GCS, Sheets)"
   routines:
     type: list(object)
+    default: []
     description: "List of SQL routines (functions, procedures) to create"
   access:
     type: list(object)
+    default: []
     description: "Access controls on the dataset (IAM-style permissions)"
 
 outputs:

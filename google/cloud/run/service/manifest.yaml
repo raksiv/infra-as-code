@@ -24,42 +24,55 @@ inputs:
     description: "Container image URL (e.g. `gcr.io/project/image:tag` or `us-docker.pkg.dev/project/repo/image:tag`)"
   service_account_email:
     type: string
+    default: null
     description: "Service account email to run the service as (e.g. `my-sa@project.iam.gserviceaccount.com`)"
   container_port:
     type: number
+    default: 8080
     description: "Port the container listens on (e.g. `8080`)"
   cpu:
     type: string
+    default: "1"
     description: "CPU allocation (e.g. `1`, `2`, `4`)"
   memory:
     type: string
+    default: "512Mi"
     description: "Memory allocation (e.g. `512Mi`, `1Gi`, `2Gi`)"
   cpu_idle:
     type: bool
+    default: true
     description: "Whether CPU should be throttled when idle (e.g. `true`)"
   min_instances:
     type: number
+    default: 0
     description: "Minimum number of instances (e.g. `0`)"
   max_instances:
     type: number
+    default: 100
     description: "Maximum number of instances (e.g. `100`)"
   container_concurrency:
     type: number
+    default: 80
     description: "Maximum number of concurrent requests per instance (e.g. `80`)"
   timeout_seconds:
     type: number
+    default: 300
     description: "Request timeout in seconds (e.g. `300`)"
   environment_variables:
     type: map(string)
+    default: {}
     description: "Environment variables to set (e.g. `{\"ENV\": \"production\", \"API_KEY\": \"secret\"}`)"
   ingress:
     type: string
+    default: "INGRESS_TRAFFIC_ALL"
     description: "Ingress settings: INGRESS_TRAFFIC_ALL, INGRESS_TRAFFIC_INTERNAL_ONLY, or INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER (e.g. `INGRESS_TRAFFIC_ALL`)"
   allow_public_access:
     type: bool
+    default: false
     description: "Allow public (unauthenticated) access (e.g. `false`)"
   deletion_protection:
     type: bool
+    default: false
     description: "Enable deletion protection (e.g. `false`)"
 
 outputs:

@@ -16,18 +16,23 @@ inputs:
     description: "The GCP project ID (e.g. `my-project-123`)"
   location:
     type: string
+    default: "US"
     description: "The location of the bucket (e.g. `US`, `us-central1`, `EU`)"
   force_destroy:
     type: bool
+    default: false
     description: "When deleting a bucket, delete all objects in it first (e.g. `false`)"
   versioning_enabled:
     type: bool
+    default: false
     description: "Enable versioning for the bucket (e.g. `false`)"
   lifecycle_rules:
     type: list(object)
+    default: []
     description: "Lifecycle rules for the bucket (e.g. delete after 30 days, archive to Nearline)"
   labels:
     type: map(string)
+    default: {}
     description: 'Labels to apply to the bucket (e.g. `{"environment": "prod", "team": "platform"}`)'
 
 outputs:
