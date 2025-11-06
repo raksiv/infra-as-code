@@ -1,6 +1,6 @@
 name: cloudshell
 display_name: Cloud Shell API
-type: service
+type: infra
 description: "Enables the Cloud Shell API for a GCP project"
 deployment:
   terraform: ./module

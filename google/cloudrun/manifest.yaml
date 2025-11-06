@@ -4,7 +4,8 @@ type: service
 description: "Deploys Cloud Run services with auto-scaling, service accounts, and configurable ingress"
 deployment:
   terraform: ./module
-
+runtime:
+  go_module: github.com/raksiv/infra-as-code/google/cloudrun
 inputs:
   project_id:
     type: string
@@ -61,7 +62,7 @@ inputs:
   environment_variables:
     type: map(string)
     default: {}
-    description: "Environment variables to set (e.g. `{\"ENV\": \"production\", \"API_KEY\": \"secret\"}`)"
+    description: 'Environment variables to set (e.g. `{"ENV": "production", "API_KEY": "secret"}`)'
   ingress:
     type: string
     default: "INGRESS_TRAFFIC_ALL"
