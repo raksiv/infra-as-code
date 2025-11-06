@@ -4,6 +4,8 @@ type: storage
 description: "Creates GCS buckets with versioning, lifecycle rules, and labels"
 deployment:
   terraform: ./module
+runtime:
+  go_module: github.com/raksiv/infra-as-code/google/storage/bucket
 
 inputs:
   bucket_name:
