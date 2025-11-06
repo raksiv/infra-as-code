@@ -1,6 +1,6 @@
 name: bigquery
 display_name: BigQuery Dataset
-type: storage
+type: database
 description: "Creates BigQuery datasets with tables, views, external tables, and routines. Wraps the official terraform-google-modules/bigquery module."
 deployment:
   terraform: ./module

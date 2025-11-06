@@ -28,7 +28,7 @@ inputs:
     description: "Lifecycle rules for the bucket (e.g. delete after 30 days, archive to Nearline)"
   labels:
     type: map(string)
-    description: "Labels to apply to the bucket (e.g. `{\"environment\": \"prod\", \"team\": \"platform\"}`)"
+    description: 'Labels to apply to the bucket (e.g. `{"environment": "prod", "team": "platform"}`)'
 
 outputs:
   bucket_name:
