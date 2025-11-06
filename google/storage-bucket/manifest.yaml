@@ -1,0 +1,37 @@
+name: storage-bucket
+display_name: Cloud Storage Bucket
+type: storage
+description: "Creates GCS buckets with versioning, lifecycle rules, and labels"
+deployment:
+  terraform: ./module
+
+inputs:
+  bucket_name:
+    type: string
+    required: true
+    description: "The name of the bucket (e.g. `my-bucket-name`)"
+  project_id:
+    type: string
+    required: true
+    description: "The GCP project ID (e.g. `my-project-123`)"
+  location:
+    type: string
+    description: "The location of the bucket (e.g. `US`, `us-central1`, `EU`)"
+  force_destroy:
+    type: bool
+    description: "When deleting a bucket, delete all objects in it first (e.g. `false`)"
+  versioning_enabled:
+    type: bool
+    description: "Enable versioning for the bucket (e.g. `false`)"
+  lifecycle_rules:
+    type: list(object)
+    description: "Lifecycle rules for the bucket (e.g. delete after 30 days, archive to Nearline)"
+  labels:
+    type: map(string)
+    description: "Labels to apply to the bucket (e.g. `{\"environment\": \"prod\", \"team\": \"platform\"}`)"
+
+outputs:
+  bucket_name:
+    description: "Name of the created bucket"
+  bucket_url:
+    description: "URL of the bucket"

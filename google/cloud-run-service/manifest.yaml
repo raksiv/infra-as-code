@@ -1,0 +1,71 @@
+name: cloud-run-service
+display_name: Cloud Run Service
+type: service
+description: "Deploys Cloud Run services with auto-scaling, service accounts, and configurable ingress"
+deployment:
+  terraform: ./module
+
+inputs:
+  project_id:
+    type: string
+    required: true
+    description: "The GCP project ID (e.g. `my-project-123`)"
+  region:
+    type: string
+    required: true
+    description: "The GCP region (e.g. `us-central1`)"
+  service_name:
+    type: string
+    required: true
+    description: "Name of the Cloud Run service (e.g. `my-api`)"
+  image:
+    type: string
+    required: true
+    description: "Container image URL (e.g. `gcr.io/project/image:tag` or `us-docker.pkg.dev/project/repo/image:tag`)"
+  service_account_email:
+    type: string
+    description: "Service account email to run the service as (e.g. `my-sa@project.iam.gserviceaccount.com`)"
+  container_port:
+    type: number
+    description: "Port the container listens on (e.g. `8080`)"
+  cpu:
+    type: string
+    description: "CPU allocation (e.g. `1`, `2`, `4`)"
+  memory:
+    type: string
+    description: "Memory allocation (e.g. `512Mi`, `1Gi`, `2Gi`)"
+  cpu_idle:
+    type: bool
+    description: "Whether CPU should be throttled when idle (e.g. `true`)"
+  min_instances:
+    type: number
+    description: "Minimum number of instances (e.g. `0`)"
+  max_instances:
+    type: number
+    description: "Maximum number of instances (e.g. `100`)"
+  container_concurrency:
+    type: number
+    description: "Maximum number of concurrent requests per instance (e.g. `80`)"
+  timeout_seconds:
+    type: number
+    description: "Request timeout in seconds (e.g. `300`)"
+  environment_variables:
+    type: map(string)
+    description: "Environment variables to set (e.g. `{\"ENV\": \"production\", \"API_KEY\": \"secret\"}`)"
+  ingress:
+    type: string
+    description: "Ingress settings: INGRESS_TRAFFIC_ALL, INGRESS_TRAFFIC_INTERNAL_ONLY, or INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER (e.g. `INGRESS_TRAFFIC_ALL`)"
+  allow_public_access:
+    type: bool
+    description: "Allow public (unauthenticated) access (e.g. `false`)"
+  deletion_protection:
+    type: bool
+    description: "Enable deletion protection (e.g. `false`)"
+
+outputs:
+  service_name:
+    description: "Name of the Cloud Run service"
+  service_url:
+    description: "URL of the Cloud Run service"
+  service_id:
+    description: "ID of the Cloud Run service"

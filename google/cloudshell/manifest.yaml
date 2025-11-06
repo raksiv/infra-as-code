@@ -1,0 +1,21 @@
+name: cloudshell
+display_name: Cloud Shell API
+type: api
+description: "Enables the Cloud Shell API for a GCP project"
+deployment:
+  terraform: ./module
+
+inputs:
+  project_id:
+    type: string
+    required: true
+    description: "The GCP project ID where Cloud Shell will be enabled (e.g. `my-project-123`)"
+  region:
+    type: string
+    description: "The GCP region for Cloud Shell configuration (e.g. `us-central1`)"
+
+outputs:
+  project_id:
+    description: "The project ID where Cloud Shell was enabled"
+  api_enabled:
+    description: "Whether the Cloud Shell API is enabled"
