@@ -1,0 +1,40 @@
+name: service-account
+display_name: Service Account
+type: service
+description: "Creates and manages GCP service accounts with IAM permissions"
+deployment:
+  terraform: ./module
+
+inputs:
+  project_id:
+    type: string
+    required: true
+    description: "Google Cloud Project ID (e.g. `my-project-123`)"
+  account_id:
+    type: string
+    required: true
+    description: "Service account ID, 6-30 chars (e.g. `my-service-account`)"
+  display_name:
+    type: string
+    description: "Display name for the service account (e.g. `My Service Account`)"
+  description:
+    type: string
+    description: "Description of the service account (e.g. `Service account for API access`)"
+  trusted_actions:
+    type: list(string)
+    description: 'IAM permissions for custom role (e.g. `["storage.objects.get", "storage.objects.create"]`)'
+  roles:
+    type: list(string)
+    description: 'Predefined IAM roles to assign (e.g. `["roles/storage.objectViewer", "roles/bigquery.dataViewer"]`)'
+
+outputs:
+  service_account_email:
+    description: "Email address of the service account"
+  service_account_id:
+    description: "ID of the service account"
+  service_account_name:
+    description: "Name of the service account"
+  service_account_unique_id:
+    description: "Unique ID of the service account"
+  service_account_member:
+    description: "IAM member string for the service account"
