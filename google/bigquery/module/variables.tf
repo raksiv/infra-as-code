@@ -120,6 +120,7 @@ variable "routines" {
     routine_type    = string
     language        = string
     definition_body = string
+    description     = optional(string)
     arguments = optional(list(object({
       name          = string
       argument_kind = optional(string)
