@@ -1,0 +1,61 @@
+name: bigquery
+display_name: BigQuery Dataset
+type: storage
+description: "Creates BigQuery datasets with tables, views, external tables, and routines. Wraps the official terraform-google-modules/bigquery module."
+deployment:
+  terraform: ./module
+
+inputs:
+  project_id:
+    type: string
+    required: true
+    description: "The GCP project ID (e.g. `my-project-123`)"
+  dataset_id:
+    type: string
+    required: true
+    description: "Unique ID for the dataset being provisioned (e.g. `my_dataset`)"
+  dataset_name:
+    type: string
+    description: "Friendly name for the dataset being provisioned (e.g. `My Dataset`)"
+  description:
+    type: string
+    description: "Dataset description (e.g. `Analytics dataset for production`)"
+  location:
+    type: string
+    description: "The regional location for the dataset (e.g. `US`, `EU`, `us-central1`)"
+  default_table_expiration_ms:
+    type: number
+    description: "Default TTL for tables in milliseconds (e.g. `3600000` for 1 hour)"
+  delete_contents_on_destroy:
+    type: bool
+    description: "If true, delete all tables when destroying the dataset (e.g. `false`)"
+  dataset_labels:
+    type: map(string)
+    description: "Key-value pairs to apply to the dataset (e.g. `{\"environment\": \"prod\", \"team\": \"data\"}`)"
+  tables:
+    type: list(object)
+    description: "List of tables to create in the dataset with schema, partitioning, and clustering"
+  views:
+    type: list(object)
+    description: "List of views to create in the dataset with SQL queries"
+  external_tables:
+    type: list(object)
+    description: "List of external tables to create (e.g. from GCS, Sheets)"
+  routines:
+    type: list(object)
+    description: "List of SQL routines (functions, procedures) to create"
+  access:
+    type: list(object)
+    description: "Access controls on the dataset (IAM-style permissions)"
+
+outputs:
+  bigquery_dataset:
+    description: "BigQuery dataset resource"
+  bigquery_tables:
+    description: "Map of BigQuery tables created"
+  bigquery_views:
+    description: "Map of BigQuery views created"
+  bigquery_external_tables:
+    description: "Map of BigQuery external tables created"
+  dataset_id:
+    description: "ID of the BigQuery dataset"
